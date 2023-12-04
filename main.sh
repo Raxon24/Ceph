@@ -1,5 +1,18 @@
 #! /bin/bash
 
+# this is for debian bullseye 
+
+# Run as root only
+check_root() {
+  if [[ "$(id -u)" -ne 0 || $(ps -o comm= -p $PPID) == "sudo" ]]; then
+    clear
+    msg_error "Please run this script as root. "
+    echo -e "\nExiting..."
+    sleep 2
+    exit
+  fi
+}
+
 sudo apt update
 sudo apt install -y ca-certificates curl gnupg lsb-release sudo lvm2
 sleep 10
@@ -28,4 +41,3 @@ sleep 5
 sudo ./cephadm install
 
 sudo cephadm bootstrap --mon-ip 10.0.2.55
-rm main.sh

@@ -1,4 +1,4 @@
-#! /bin/bash
+#!/bin/bash
 
 # this is for debian bullseye 
 

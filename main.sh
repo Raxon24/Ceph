@@ -22,12 +22,3 @@ echo \
   sudo apt-get update
   sudo apt-get install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 
-
-curl --silent --remote-name --location https://github.com/ceph/ceph/raw/reef/src/cephadm/cephadm
-chmod +x cephadm
-
-sudo ./cephadm add-repo --release quincy
-sleep 5
-sudo ./cephadm install
-
-sudo cephadm bootstrap --mon-ip 10.0.2.55
